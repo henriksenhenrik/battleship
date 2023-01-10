@@ -6,7 +6,7 @@ WINDOW_HEIGHT = 510
 WINDOW_WIDTH = 510
 game_window = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_WIDTH))
 pygame.display.set_caption("Battleship")
-# set the background color
+
 hav_color = (43, 101, 236)
 grid_color_skip = (67, 70, 75)
 margin_color = (70, 130, 255)
@@ -28,7 +28,6 @@ class Grid:
         self.hit_count = 0
         self.all_ships_set = False
         self.ships_sunk = 0
-
 
         for rad in range(10):
             self.grid.append([])
@@ -84,18 +83,15 @@ class Grid:
                                   (self.margin + self.grid_height) * rad + self.margin,
                                   self.grid_width, self.grid_height])
 
-
 def lag_grid():
     for rad in range(10):
         grid.append([])
         for kolonne in range(10):
             grid[rad].append(0)
 
-
 game_grid = Grid()
 all_ships_shot = False
 
-# create a game loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -115,11 +111,8 @@ while True:
 
     game_window.fill(margin_color)
     game_grid.draw(game_window)
-    
     if all_ships_shot:
         game_grid.display_hit_count(game_window)
-
-    
     pygame.display.update()
     pygame.display.flip()
 
